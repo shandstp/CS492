@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns="http://www.w3.org/2000/svg" xmlns:cc="http://web.resource.org/cc/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:svg="http://www.w3.org/2000/svg" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:ns1="http://sozi.baierouge.fr" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 600 400">
+  <defs>
+    <filter id="imagebot_13_blur">
+      <feGaussianBlur stdDeviation="0.6" in="SourceGraphic"/>
+    </filter>
+    <filter id="imagebot_28_blur" y="-50%" width="200%" height="200%" x="-50%">
+      <feGaussianBlur stdDeviation="3.6" in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="imagebot_1">
+    <title>Layer 1</title>
+    <circle id="imagebot_13" stroke-linejoin="round" stroke-width="0" stroke-linecap="round" filter="url(#imagebot_13_blur)" cy="186.5" cx="294.5" r="83.5"/>
+    <ellipse id="imagebot_25" stroke-linejoin="round" cx="316.01" rx="35.012" ry="35.012" cy="208.01" stroke-linecap="round" stroke-width="0" fill="#fffcfc"/>
+    <text id="imagebot_27" stroke-linejoin="round" font-size="54" font-family="serif" xml:space="preserve" text-anchor="middle" stroke-linecap="round" y="227" x="319" stroke-width="0" fill="#000000">8</text>
+    <ellipse id="imagebot_28" opacity=".85" stroke-linejoin="round" cx="300.5" rx="75.5" transform="rotate(-2.02 300.63 283.3) matrix(1 0 0 1 .13424 -6.0024)" ry="12.311" filter="url(#imagebot_28_blur)" cy="289.31" stroke-linecap="round" stroke-width="0" fill="#b2b2b2"/>
+    <ellipse id="imagebot_29" stroke-linejoin="round" cx="342.5" rx="2.5" ry=".5" cy="279.5" stroke-linecap="round" stroke-width="0" fill="#b2b2b2"/>
+    <ellipse id="imagebot_30" opacity=".85" stroke-linejoin="round" cx="260.75" rx="45.188" transform="rotate(-42.72 253.11 145.55) matrix(1 0 0 1 -7.6321 -16.453)" ry="18.757" cy="162" stroke-linecap="round" stroke-width="0" fill="#191919"/>
+    <ellipse id="imagebot_31" opacity=".85" stroke-linejoin="round" cx="460" rx="1" ry="0" cy="117" stroke-linecap="round" stroke-width="0" fill="#191919"/>
+  </g>
+  <metadata>
+    <rdf:RDF>
+      <cc:Work>
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+        <cc:license rdf:resource="http://creativecommons.org/licenses/publicdomain/"/>
+        <dc:publisher>
+          <cc:Agent rdf:about="http://openclipart.org/">
+            <dc:title>Openclipart</dc:title>
+          </cc:Agent>
+        </dc:publisher>
+        <dc:title>8 Ball</dc:title>
+        <dc:date>2013-09-09T04:12:39</dc:date>
+        <dc:description>A classic 8 ball.</dc:description>
+        <dc:source>https://openclipart.org/detail/183229/8-ball-by-cows_in_action-183229</dc:source>
+        <dc:creator>
+          <cc:Agent>
+            <dc:title>Cows_In_Action</dc:title>
+          </cc:Agent>
+        </dc:creator>
+        <dc:subject>
+          <rdf:Bag>
+            <rdf:li>8</rdf:li>
+            <rdf:li>8 Ball</rdf:li>
+            <rdf:li>8 ball</rdf:li>
+            <rdf:li>Ball</rdf:li>
+            <rdf:li>Eight</rdf:li>
+            <rdf:li>Eight Ball</rdf:li>
+            <rdf:li>Eight ball</rdf:li>
+            <rdf:li>Pool</rdf:li>
+            <rdf:li>Pool table</rdf:li>
+            <rdf:li>Table</rdf:li>
+            <rdf:li>ball</rdf:li>
+            <rdf:li>eight</rdf:li>
+            <rdf:li>eight Ball</rdf:li>
+            <rdf:li>eight ball</rdf:li>
+            <rdf:li>pool</rdf:li>
+            <rdf:li>pool Table</rdf:li>
+            <rdf:li>pool table</rdf:li>
+            <rdf:li>table</rdf:li>
+          </rdf:Bag>
+        </dc:subject>
+      </cc:Work>
+      <cc:License rdf:about="http://creativecommons.org/licenses/publicdomain/">
+        <cc:permits rdf:resource="http://creativecommons.org/ns#Reproduction"/>
+        <cc:permits rdf:resource="http://creativecommons.org/ns#Distribution"/>
+        <cc:permits rdf:resource="http://creativecommons.org/ns#DerivativeWorks"/>
+      </cc:License>
+    </rdf:RDF>
+  </metadata>
+</svg>
