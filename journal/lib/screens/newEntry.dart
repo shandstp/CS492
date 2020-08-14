@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:dropdown_formfield/dropdown_formfield.dart';
 import 'package:sqflite/sqflite.dart';
 
 class JournalEntryFields {
@@ -18,6 +19,7 @@ class NewEntry extends StatefulWidget {
 }
 
 class _NewEntryState extends State<NewEntry> {
+  String rating = '4';
   final formKey = GlobalKey<FormState>();
   final journalEntryFields = JournalEntryFields();
   @override
@@ -27,11 +29,11 @@ class _NewEntryState extends State<NewEntry> {
         title: Text('New Journal Entry'),
       ),
       body: Padding(
-        padding: const EdgeInsets.all(10),
+        padding: const EdgeInsets.all(5),
         child: Form(
             key: formKey,
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 TextFormField(
                   autofocus: true,
@@ -67,7 +69,59 @@ class _NewEntryState extends State<NewEntry> {
                     }
                   },
                 ),
-                SizedBox(height: 10),
+                TextFormField(
+                  autofocus: true,
+                  decoration: InputDecoration(
+                    labelText: 'Rating',
+                    border: OutlineInputBorder(),
+                  ),
+                  onSaved: (value) {
+                    journalEntryFields.rating = int.parse(value);
+                  },
+                  validator: (value) {
+                    if (value.isEmpty) {
+                      return 'Please enter a rating';
+                    } else if (int.parse(value) < 1 || int.parse(value) > 4) {
+                      return 'Rating must be 1-4';
+                    } else {
+                      return null;
+                    }
+                  },
+                ),
+                // SizedBox(height: 10),
+                // DropDownFormField(
+                //   titleText: 'Rating',
+                //   hintText: 'Please rate your experience',
+                //   value: rating,
+                //   onSaved: (value) {
+                //     setState(() {
+                //       rating = value;
+                //     });
+                //   },
+                //   onChanged: (value) {
+                //     setState(() {
+                //       rating = value;
+                //     });
+                //   },
+                //   dataSource: [
+                //     {
+                //       "display": "1 star",
+                //       "value": "1",
+                //     },
+                //     {
+                //       "display": "2 stars",
+                //       "value": "2",
+                //     },
+                //     {
+                //       "display": "3 stars",
+                //       "value": "3",
+                //     },
+                //     {
+                //       "display": "4 stars",
+                //       "value": "4",
+                //     }
+                //   ],
+                // ),
                 RaisedButton(
                   onPressed: () async {
                     if (formKey.currentState.validate()) {

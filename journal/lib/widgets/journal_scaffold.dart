@@ -15,7 +15,7 @@ class JournalScaffold extends StatelessWidget {
         title: Text(title),
         actions: <Widget>[aib],
       ),
-      body: Center(child: child),
+      body: Container(child: child),
       floatingActionButton: fab,
     );
   }

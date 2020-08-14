@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:journal/screens/details.dart';
 import 'package:journal/widgets/welcome.dart';
 import 'package:sqflite/sqflite.dart';
 import '../models/journal_entry.dart';
@@ -43,37 +44,70 @@ class _HomePageState extends State<Home> {
           rating: record['rating'],
           dateTime: DateTime.parse(record['date']));
     }).toList();
-    print('This is what journalEntries looks like: $journalEntries');
     setState(() {
       journal = Journal(entries: journalEntries);
     });
   }
 
-  void _createEntry(BuildContext context) =>
-      Navigator.of(context).pushNamed(NewEntry.routeName);
+  void _createEntry(BuildContext context) {
+    Navigator.pushNamed(context, NewEntry.routeName).then((_) {
+      loadJournal();
+    });
+  }
 
   void _changeSettings(BuildContext context) =>
       Navigator.of(context).pushNamed(Settings.routeName);
 
   @override
   Widget build(BuildContext context) {
-    if (journal == null) {
-      return JournalScaffold(
-          title: 'Loading', child: Center(child: CircularProgressIndicator()));
-    } else {
-      return JournalScaffold(
-          aib: addIconButton(context),
-          title: journal.isEmpty() ? 'Welcome' : 'Journal Entries',
-          child: journal.isEmpty() ? Welcome() : journalList(context),
-          fab: addEntryFab(context));
-    }
+    return LayoutBuilder(builder: (context, constraints) {
+      return constraints.maxWidth < 500
+          ? VerticalLayout(
+              widgy: journal == null
+                  ? JournalScaffold(
+                      aib: addIconButton(context),
+                      title: 'Loading',
+                      child: Center(child: CircularProgressIndicator()),
+                      fab: addEntryFab(context))
+                  : JournalScaffold(
+                      aib: addIconButton(context),
+                      title: journal.isEmpty() ? 'Welcome' : 'Journal Entries',
+                      child:
+                          journal.isEmpty() ? Welcome() : journalList(context),
+                      fab: addEntryFab(context)))
+          : HorizonalLayout(
+              widgy: journal == null
+                  ? JournalScaffold(
+                      aib: addIconButton(context),
+                      title: 'Loading',
+                      child: Center(child: CircularProgressIndicator()),
+                      fab: addEntryFab(context))
+                  : JournalScaffold(
+                      aib: addIconButton(context),
+                      title: journal.isEmpty() ? 'Welcome' : 'Journal Entries',
+                      child:
+                          journal.isEmpty() ? Welcome() : journalList(context),
+                      fab: addEntryFab(context)),
+            );
+    });
   }
+
+  void _detailView(BuildContext context, var title, var body, var rating,
+          var datetime) =>
+      Navigator.of(context).pushNamed(Details.routeName);
 
   Widget journalList(BuildContext context) {
     return ListView.builder(
+      shrinkWrap: true,
       itemCount: journal.numberOfEntries(),
       itemBuilder: (context, index) {
         return ListTile(
+          onTap: () => _detailView(
+              context,
+              journal.getEntry(index).title,
+              journal.getEntry(index).body,
+              journal.getEntry(index).rating,
+              journal.getEntry(index).dateTime),
           title: Text(journal.getEntry(index).title),
           subtitle: Text(journal.getEntry(index).dateTime.toString()),
         );
@@ -94,5 +128,33 @@ class _HomePageState extends State<Home> {
         icon: const Icon(Icons.settings),
         tooltip: 'Change Settings',
         onPressed: () => _changeSettings(context));
+  }
+}
+
+class VerticalLayout extends StatefulWidget {
+  VerticalLayout({Key key, this.widgy}) : super(key: key);
+  final Widget widgy;
+  @override
+  _VerticalLayoutState createState() => _VerticalLayoutState();
+}
+
+class _VerticalLayoutState extends State<VerticalLayout> {
+  @override
+  Widget build(BuildContext context) {
+    return Container(child: widget.widgy);
+  }
+}
+
+class HorizonalLayout extends StatefulWidget {
+  HorizonalLayout({Key key, this.widgy}) : super(key: key);
+  final Widget widgy;
+  @override
+  _HorizonalLayoutState createState() => _HorizonalLayoutState();
+}
+
+class _HorizonalLayoutState extends State<HorizonalLayout> {
+  @override
+  Widget build(BuildContext context) {
+    return widget.widgy;
   }
 }

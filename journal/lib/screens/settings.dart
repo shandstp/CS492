@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:journal/main.dart';
 
 class Settings extends StatefulWidget {
   static const routeName = 'Settings';
+
   @override
   _SettingsState createState() => _SettingsState();
 }
 
 class _SettingsState extends State<Settings> {
-  bool _isSelected = false;
-
   @override
   Widget build(BuildContext context) {
+    JournalAppState appState = context.findAncestorStateOfType();
     return Scaffold(
       appBar: AppBar(
         title: Text('settings'),
@@ -18,11 +19,11 @@ class _SettingsState extends State<Settings> {
       body: LabeledSwtich(
         label: 'Enable Dark Mode',
         padding: const EdgeInsets.symmetric(horizontal: 20.0),
-        value: _isSelected,
+        value: appState.darkModeOn,
         onChanged: (bool newValue) {
           setState(
             () {
-              _isSelected = newValue;
+              appState.toggleDarkMode();
             },
           );
         },
